@@ -18,6 +18,8 @@ document.querySelector('.check').addEventListener('click', function () {
     alert('Enter a real number.');
   } else if (guess === number) {
     document.querySelector('.message').textContent = '🗣 Correct Number!';
+    document.querySelector('body').style.backgroundColor = '#60b347';
+    document.querySelector('.number').style.width = '30rem';
   } else if (guess > number) {
     if (score > 1) {
       document.querySelector('.message').textContent = '📈 Too high!';
