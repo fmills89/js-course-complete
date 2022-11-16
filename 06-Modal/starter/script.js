@@ -29,9 +29,7 @@ overlay.addEventListener('click', closeModal);
 
 // closing modal when hitting ESC key
 document.addEventListener('keydown', function (e) {
-  if (e.key === 'Escape') {
-    if (!modal.classList.contains('hidden')) {
-      closeModal();
-    }
+  if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+    closeModal();
   }
 });
