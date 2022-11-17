@@ -1,6 +1,8 @@
 'use strict';
 
 // adding El represents a DOM element
+const player0El = document.querySelector('.player--0');
+const player1El = document.querySelector('.player--1');
 let score0El = document.querySelector('#score--0');
 let score1El = document.getElementById('score--1');
 
@@ -17,7 +19,9 @@ score1El.textContent = 0;
 // hiding dice w/ classlist css hidden
 diceEl.classList.add('hidden');
 
+const scores = [0, 0];
 let currentScore = 0;
+let activePlayer = 0;
 
 //rolling dice functionally
 btnRoll.addEventListener('click', function () {
@@ -35,7 +39,18 @@ btnRoll.addEventListener('click', function () {
   if (diceRoll !== 1) {
     // Add dice to current score
     currentScore += diceRoll;
-    current0El.textContent = currentScore;
+    // build id name dynamiaclly
+    document.getElementById(`current--${activePlayer}`).textContent =
+      currentScore;
   } else {
+    // Reassigning active player and checking if player is 0 if not
+    // activePlayer is 1, otherwise false = 0;
+    document.getElementById(`current--${activePlayer}`).textContent = 0;
+    currentScore = 0;
+    activePlayer = activePlayer === 0 ? 1 : 0;
+    // using toggle method to remove/add class based on which
+    // player - player0 has inital class first
+    player0El.classList.toggle('player--active');
+    player1El.classList.toggle('player--active');
   }
 });
